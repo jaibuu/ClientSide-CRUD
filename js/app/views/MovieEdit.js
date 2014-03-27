@@ -69,10 +69,20 @@ define(function (require) {
         handleActorClick:function(element){
             var type = $(element.currentTarget).data('click-action');
             var id = $(element.currentTarget).data('id');
+            var currentActors = $('[name=actors]').val().split(",");
+
             if(type == 'add'){
                 $('#searchItem').val('');
-                $('[name=actors]').val(  $('[name=actors]').val()+','+id );
+                currentActors.push(id);
             }
+
+            if(type == 'delete'){
+                currentActors = jQuery.grep(currentActors, function(value) {
+                  return value != id;
+                });
+            }
+
+            $('[name=actors]').val( currentActors.join(',') );
             return false;
         },
         onkeypress: function (event) {
