@@ -7,6 +7,7 @@ define(function (require) {
         layoutView   = require('app/views/Layout'),
         HomeView    = require('app/views/Home'),
         MovieView    = require('app/views/Movie'),
+        MovieEdit   = require('app/views/MovieEdit'),
         ActorView    = require('app/views/Actor'),
 
         $body = $('body'),
@@ -53,11 +54,11 @@ define(function (require) {
         },
 
         movieEdit: function (id) {
-            require(["app/views/Movie", "app/models/Movie"], function (MovieView, models) {
-                var movie = new models.Movie({id: id});
+            require(["app/views/MovieEdit", "app/models/Movie"], function (MovieView, models) {
+                var movie = new models.Movie({id: id}); 
                 movie.fetch({
                     success: function (data) {
-                        var view = new MovieView({model: data, el: $content});
+                        var view = new MovieEdit({model: data, el: $content});
                         view.render();
                     }
                 });
