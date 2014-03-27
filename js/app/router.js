@@ -15,9 +15,9 @@ define(function (require) {
         homeView = new HomeView({el: $content});
 
     // Close the search dropdown on click anywhere in the UI
-    $body.click(function () {
-        $('.dropdown').removeClass("open");
-    });
+    // $body.click(function () {
+    //     $('.dropdown').removeClass("open");
+    // });
 
     $("body").on("click", "#searchNow", function (event) {
         event.preventDefault();

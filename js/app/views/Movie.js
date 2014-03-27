@@ -14,14 +14,14 @@ define(function (require) {
 
         render: function () {
             this.$el.html(template(this.model.attributes));
-            this.model.reports.fetch({
+            this.model.actors.fetch({
                 success: function (data) {
                     if (data.length === 0) {
-                        $('.no-reports').show();
+                        $('.no-actors').show();
                     }
                 }
             });
-            var listView = new MovieListView({collection: this.model.reports, el: $('.report-list', this.el)});
+            var listView = new MovieListView({collection: this.model.actors, el: $('.actor-list', this.el)});
             listView.render();
             return this;
         }

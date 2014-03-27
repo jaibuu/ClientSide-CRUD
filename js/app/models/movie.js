@@ -32,14 +32,14 @@ define(function (require) {
         findByName = function (searchKey) {
             var deferred = $.Deferred(),
                 results = movies.filter(function (element) {
-                    var fullName = element.firstName + " " + element.lastName;
-                    return fullName.toLowerCase().indexOf(searchKey.toLowerCase()) > -1;
+                    var name = element.name;
+                    return name.toLowerCase().indexOf(searchKey.toLowerCase()) > -1;
                 });
             deferred.resolve(results);
             return deferred.promise();
         },
 
-        findByManager = function (managerId) {
+        findByActor = function (managerId) {
             var deferred = $.Deferred(),
                 results = movies.filter(function (element) {
                     return managerId === element.managerId;
@@ -52,8 +52,8 @@ define(function (require) {
         Movie = Backbone.Model.extend({
 
             initialize: function () {
-                this.reports = new ReportsCollection();
-                this.reports.parent = this;
+                this.actors = new ActorsCollection();
+                this.actors.parent = this;
             },
 
             sync: function (method, model, options) {
@@ -80,13 +80,13 @@ define(function (require) {
 
         }),
 
-        ReportsCollection = Backbone.Collection.extend({
+        ActorsCollection = Backbone.Collection.extend({
 
             model: Movie,
 
             sync: function (method, model, options) {
                 if (method === "read") {
-                    findByManager(this.parent.id).done(function (data) {
+                    findByActor(this.parent.id).done(function (data) {
                         options.success(data);
                     });
                 }
@@ -97,7 +97,7 @@ define(function (require) {
     return {
         Movie: Movie,
         MovieCollection: MovieCollection,
-        ReportsCollection: ReportsCollection
+        ActorsCollection: ActorsCollection
     };
 
 });
