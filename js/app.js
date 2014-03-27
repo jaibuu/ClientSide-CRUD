@@ -22,7 +22,7 @@ require.config({
     }
 });
 
-require(['jquery', 'backbone', 'app/router'], function ($, Backbone, Router) {
+require(['jquery', 'backbone', 'app/router', 'Backbone.ModelBinder'], function ($, Backbone, Router) {
     var router = new Router();
     Backbone.history.start();
 });

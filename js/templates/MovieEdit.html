@@ -6,27 +6,27 @@
     <table class="table table-striped">
         <tr>
             <td>Genre:</td>
-            <td> <%= genre %></td>
+            <td> <input type="text" name="genre" value="<%= genre %>"/> </td>
         </tr>
         <tr>
             <td>Director Name:</td>
-            <td> <%= directorName %></td>
+            <td> <input type="text" name="directorName" value="<%= directorName %>"/> </td>
         </tr>
         <tr>
             <td>Release Year:</td>
-            <td> <%= releaseYear %></td>
+            <td> <input type="text" name="releaseYear" value="<%= releaseYear %>"/> </td>
         </tr>
         <tr>
             <td>Gross Income:</td>
-            <td> <%= grossIncome %></td>
+            <td> <input type="text" name="grossIncome" value="<%= grossIncome %>"/> </td>
         </tr>
     </table>
 
-    <div class="alert alert-info">
-        <h4 class="alert-heading">Save</h4>
+    <div class="alert alert-warning">
+        <h4 class="alert-heading">Changes are saved automatically</h4>
         <hr />
-        <a href='#' id="save" class="btn btn-primary">
-            Save <%= name %>
+        <a href='#movie/view/<%= id %>' class="btn">
+            Go back
         </a>
     </div>
 </div>

@@ -15,6 +15,7 @@ define(function (require) {
         ],
 
         findById = function (id) {
+            console.log('all', movies);
             var deferred = $.Deferred(),
                 movie = null,
                 l = movies.length,
@@ -27,6 +28,19 @@ define(function (require) {
             }
             deferred.resolve(movie);
             return deferred.promise();
+        },
+
+        getLocalInstanceById = function (id) {
+            var movie = null,
+                l = movies.length,
+                i;
+            for (i = 0; i < l; i = i + 1) {
+                if (movies[i].id === id) {
+                    movie = movies[i];
+                    break;
+                }
+            }
+            return movie;
         },
 
         findByName = function (searchKey) {
@@ -61,6 +75,13 @@ define(function (require) {
                     findById(parseInt(this.id)).done(function (data) {
                         options.success(data);
                     });
+                } else if  (method === "write") { 
+                    var storage = getLocalInstanceById(this.id);
+                    for (var attr in this.attributes) {
+                        if(this.attributes.hasOwnProperty(attr)) {
+                             storage[attr] = this.attributes[attr];
+                        }
+                    };
                 }
             }
 
