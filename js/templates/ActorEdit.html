@@ -1,0 +1,41 @@
+<div id="details" class="span7">
+    <p><img src="localImage" width="160" height="160"/></p>
+    <h3><%= firstName %>  <%= lastName %> </h3>
+    <br>
+    <table class="table table-striped">
+        <tr>
+            <td>First Name:</td>
+            <td> <input type="text" name="firstName" value="<%= firstName %>"/> </td>
+        </tr>
+        <tr>
+            <td>Last Name:</td>
+            <td> <input type="text" name="lastName" value="<%= lastName %>"/> </td>
+        </tr>
+        <tr>
+            <td>Gender:</td>
+            <td> <input type="text" name="gender" value="<%= gender %>"/> </td>
+        </tr>
+        <tr>
+            <td>Birth Date:</td>
+            <td> <input type="text" name="birthDate" value="<%= birthDate %>"/> </td>
+        </tr>
+    </table>
+
+    <div class="alert alert-warning">
+        <h4 class="alert-heading">Changes are saved automatically</h4>
+        <hr />
+        <a href='#actor/view/<%= id %>' class="btn">
+            Go back
+        </a>
+    </div>
+</div>
+<div class="span5">
+    <div class="well">
+        <h3 class="modal-header">Movies</h3>
+        <ul class="nav nav-list movie-list"></ul>
+        <div class="alert alert-info no-movies">
+            <h4 class="alert-heading">Info</h4>
+            no movies
+        </div>
+    </div>
+</div>

@@ -5,7 +5,7 @@ define(function (require) {
     var $                   = require('jquery'),
         _                   = require('underscore'),
         Backbone            = require('backbone'),
-        ActorListView       = require('app/views/MovieList'),
+        ActorListView       = require('app/views/ActorList'),
         templates           = require('text!templates/MovieEdit.html'),
 
 
@@ -27,7 +27,6 @@ define(function (require) {
             this._modelBinder.unbind();
         },
 
-
         render: function () {
             this.$el.html(template(this.model.attributes));
             this.model.actors.fetch({
@@ -39,9 +38,6 @@ define(function (require) {
             });
             var listView = new ActorListView({collection: this.model.actors, el: $('.actor-list', this.el)});
             listView.render();
-
-
-            // var bindings = {genre: '[name=genre]'};
 
             this._modelBinder.bind(this.model, this.$el);
 

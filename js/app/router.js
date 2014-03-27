@@ -9,6 +9,7 @@ define(function (require) {
         MovieView    = require('app/views/Movie'),
         MovieEdit   = require('app/views/MovieEdit'),
         ActorView    = require('app/views/Actor'),
+        ActorEdit    = require('app/views/ActorEdit'),
 
         $body = $('body'),
         layoutView = new layoutView({el: $body}).render(),
@@ -31,7 +32,8 @@ define(function (require) {
             "": "home",
             "movie/view/:id": "movieDetails",
             "movie/edit/:id": "movieEdit",
-            "actor/view/:id": "actorDetails"
+            "actor/view/:id": "actorDetails",
+            "actor/edit/:id": "actorEdit"
         },
 
         home: function () {
@@ -72,6 +74,19 @@ define(function (require) {
                 actor.fetch({
                     success: function (data) {
                         var view = new ActorView({model: data, el: $content});
+                        view.render();
+                    }
+                });
+                layoutView.selectMenuItem();
+            });
+        },
+
+        actorEdit: function (id) {
+            require(["app/views/ActorEdit", "app/models/Actor"], function (ActorView, models) {
+                var actor = new models.Actor({id: id});
+                actor.fetch({
+                    success: function (data) {
+                        var view = new ActorEdit({model: data, el: $content});
                         view.render();
                     }
                 });
