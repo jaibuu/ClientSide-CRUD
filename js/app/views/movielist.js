@@ -5,7 +5,7 @@ define(function (require) {
     var $                       = require('jquery'),
         _                       = require('underscore'),
         Backbone                = require('backbone'),
-        MovieListItemView    = require('app/views/MovieListItem');
+        MovieListItemView       = require('app/views/MovieListItem');
 
     return Backbone.View.extend({
 

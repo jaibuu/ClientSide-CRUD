@@ -36,8 +36,8 @@ define(function (require) {
                     }
                 }
             });
-            var listView = new MovieListView({collection: this.model.movies, el: $('.movie-list', this.el)});
-            listView.render();
+            // var listView = new MovieListView({collection: this.model.movies, el: $('.movie-list', this.el)});
+            // listView.render();
 
             this._modelBinder.bind(this.model, this.$el);
 

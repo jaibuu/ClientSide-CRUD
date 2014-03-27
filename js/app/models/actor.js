@@ -56,6 +56,26 @@ define(function (require) {
             return deferred.promise();
         },
 
+        findMany = function (array) {
+            var deferred = $.Deferred(),
+                results = actors.filter(function (element) {
+                    if(array.indexOf(element.id) == -1){
+                        return false;
+                    } else {
+                        return true;
+                    }
+                });
+            deferred.resolve(results);
+            return deferred.promise();
+        },
+
+        findAll = function () {
+            var deferred = $.Deferred(),
+                results = actors;
+            deferred.resolve(results);
+            return deferred.promise();
+        },
+
         findByMovie = function (managerId) {
             var deferred = $.Deferred(),
                 results = actors.filter(function (element) {
@@ -96,9 +116,24 @@ define(function (require) {
 
             sync: function (method, model, options) {
                 if (method === "read") {
-                    findByName(options.data.name).done(function (data) {
-                        options.success(data);
-                    });
+                    if(options.data && options.data.name){
+                        findByName(options.data.name).done(function (data) {
+                            options.success(data);
+                        });
+                    } else if(options.data && options.data.id){
+                        findById(options.data.id).done(function (data) {
+                            options.success(data);
+                        });
+                    }  else if(options.data && options.data.ids){
+                        findMany(options.data.ids).done(function (data) {
+                            options.success(data);
+                        });
+                    } 
+                    // else {
+                    //     findAll().done(function (data) {
+                    //         options.success(data);
+                    //     });
+                    // }
                 }
             }
 

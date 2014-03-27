@@ -4,14 +4,22 @@ define(function (require) {
 
     var $                   = require('jquery'),
         Backbone            = require('backbone'),
+        actorModel          = require('app/models/actor'),
+
 
         movies = [
             {"id": 1, "name": "Vertigo",
-                "releaseYear": 1958, "grossIncome": 14000000, "directorName": "Alfred Hitchcock", "genre": "Crime"},
+                "releaseYear": 1958, "grossIncome": 14000000, "directorName": "Alfred Hitchcock", "genre": "Crime",
+                "actors": [1,2]
+            },
             {"id": 2, "name": "North by Northwest",
-                "releaseYear": 1959, "grossIncome": 9840000,  "directorName": "Alfred Hitchcock", "genre": "Mystery" },
+                "releaseYear": 1959, "grossIncome": 9840000,  "directorName": "Alfred Hitchcock", "genre": "Mystery",
+                "actors": [3,4]
+             },
             {"id": 3, "name": "Psycho",
-                "releaseYear": 1960, "grossIncome": 60000000, "directorName": "Alfred Hitchcock", "genre": "Horror"}
+                "releaseYear": 1960, "grossIncome": 60000000, "directorName": "Alfred Hitchcock", "genre": "Horror",
+                "actors": [2,3]
+            }
         ],
 
         findById = function (id) {
@@ -65,8 +73,14 @@ define(function (require) {
         Movie = Backbone.Model.extend({
 
             initialize: function () {
-                this.actors = new ActorsCollection();
-                this.actors.parent = this;
+                this.actors = new actorModel.ActorCollection();
+
+                this.actors.fetch({reset: true, data:{ids: [1,2]}, success: function () {
+                        
+
+                }});
+
+                // this.actors.parent = this;
             },
 
             sync: function (method, model, options) {
@@ -86,6 +100,7 @@ define(function (require) {
 
         }),
 
+        //used by general search and authors
         MovieCollection = Backbone.Collection.extend({
 
             model: Movie,
