@@ -18,11 +18,14 @@ require.config({
         },
         'underscore': {
             exports: '_'
+        },
+        'Backbone.CollectionBinder': {
+            deps: ['underscore', 'backbone'],
         }
     }
 });
 
-require(['jquery', 'backbone', 'app/router', 'Backbone.ModelBinder'], function ($, Backbone, Router) {
+require(['jquery', 'backbone', 'app/router', 'Backbone.ModelBinder', 'Backbone.CollectionBinder'], function ($, Backbone, Router) {
     var router = new Router();
     Backbone.history.start();
 });

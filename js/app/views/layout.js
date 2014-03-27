@@ -33,6 +33,12 @@ define(function (require) {
 
         search: function (event) {
             var key = $('#searchText').val();
+
+            //why doesn't this fetch up to date information?
+            // this.movieList.trigger('refresh');
+            // this.movieList.trigger('reset');
+            // this.movieList.trigger('update');
+            
             this.movieList.fetch({reset: true, data: {name: key}, success: function () {
                 setTimeout(function () {
                     $('.dropdown').addClass('open');
