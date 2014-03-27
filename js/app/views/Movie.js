@@ -5,7 +5,7 @@ define(function (require) {
     var $                   = require('jquery'),
         _                   = require('underscore'),
         Backbone            = require('backbone'),
-        MovieListView    = require('app/views/MovieList'),
+        ActorListView    = require('app/views/MovieList'),
         templates                 = require('text!templates/Movie.html'),
 
         template = _.template(templates);
@@ -21,7 +21,7 @@ define(function (require) {
                     }
                 }
             });
-            var listView = new MovieListView({collection: this.model.actors, el: $('.actor-list', this.el)});
+            var listView = new ActorListView({collection: this.model.actors, el: $('.actor-list', this.el)});
             listView.render();
             return this;
         }

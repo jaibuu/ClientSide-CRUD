@@ -29,7 +29,7 @@ define(function (require) {
         routes: {
             "": "home",
             "movie/view/:id": "movieDetails",
-            "movie/edit/:id": "movieDetails",
+            "movie/edit/:id": "movieEdit",
             "actor/view/:id": "actorDetails"
         },
 
@@ -40,6 +40,19 @@ define(function (require) {
         },
 
         movieDetails: function (id) {
+            require(["app/views/Movie", "app/models/Movie"], function (MovieView, models) {
+                var movie = new models.Movie({id: id});
+                movie.fetch({
+                    success: function (data) {
+                        var view = new MovieView({model: data, el: $content});
+                        view.render();
+                    }
+                });
+                layoutView.selectMenuItem();
+            });
+        },
+
+        movieEdit: function (id) {
             require(["app/views/Movie", "app/models/Movie"], function (MovieView, models) {
                 var movie = new models.Movie({id: id});
                 movie.fetch({
