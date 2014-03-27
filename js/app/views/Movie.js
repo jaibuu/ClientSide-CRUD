@@ -21,7 +21,7 @@ define(function (require) {
                     }
                 }
             });
-            var listView = new ActorListView({collection: this.model.actors, el: $('.actor-list', this.el)});
+            var listView = new ActorListView({collection: this.model.actors, el: $('.actor-list', this.el), displayMode: 'view '});
             listView.render();
             return this;
         }

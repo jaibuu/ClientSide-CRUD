@@ -4,6 +4,7 @@
     <h4><%= directorName %></h4>
     <br>
     <table class="table table-striped">
+        <input type="hidden" name="actors" value="<%= actors %>"/>
         <tr>
             <td>Name:</td>
             <td> <input type="text" name="name" value="<%= name %>"/> </td>
@@ -42,5 +43,20 @@
             <h4 class="alert-heading">Info</h4>
             no actors
         </div>
+    </div>
+</div>
+<div class="span5 addItem">
+    <div class="well">
+        <h3 class="modal-header">Add Actors</h3>
+
+            <form class="dropdown">
+                <input id="searchItem" type="search" class="search-query dropdown-toggle" placeholder="Search" autocomplete="off">
+                <ul class="dropdown-menu add-actor-list"></ul>
+            </form>
+
+            </hr>
+
+            <p>Search and click on a result to add them</p>
+            
     </div>
 </div>

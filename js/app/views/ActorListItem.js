@@ -5,7 +5,7 @@ define(function (require) {
     var $                   = require('jquery'),
         _                   = require('underscore'),
         Backbone            = require('backbone'),
-        templates                 = require('text!templates/ActorListItem.html'),
+        templates           = require('text!templates/ActorListItem.html'),
 
         template = _.template(templates);
 
@@ -13,12 +13,16 @@ define(function (require) {
 
         tagName: "li",
 
-        initialize: function () {
+        initialize: function (attrs) {
             this.model.on("change", this.render, this);
+            this.options = attrs;
         },
 
         render: function () {
-            this.$el.html(template(this.model.attributes));
+            var exposedVariables = this.model.attributes;
+            exposedVariables.displayMode = this.options.displayMode;
+
+            this.$el.html(template(exposedVariables));
             return this;
         }
 

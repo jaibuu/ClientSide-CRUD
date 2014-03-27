@@ -1,5 +1,15 @@
-<a href='#actor/view/<%= id %>' class="clear">
+<a 
+
+<% if(displayMode === 'view') { %>
+    href="#actor/view/<%= id %>"
+<% } else if(displayMode === 'delete') { %>
+    
+<% } else if(displayMode === 'add') { %>
+    
+<% } %>
+
+ class="actorLink" data-click-action="<%= displayMode %>" data-id="<%= id %>">
     <img width="65" height="65" src="localimage" style="float:left;margin-right: 10px;"/>
-    <p class="list-item"><%= firstName %> <br /><%= lastName %></p>
+    <p class="list-item"><%= firstName %> <%= firstName %> <br /><%= lastName %></p>
 </a>
 <br />

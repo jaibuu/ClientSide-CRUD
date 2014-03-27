@@ -9,15 +9,16 @@ define(function (require) {
 
     return Backbone.View.extend({
 
-        initialize: function () {
+        initialize: function (attrs) {
             this.collection.on("reset", this.render, this);
             this.collection.on("add", this.render, this);
+            this.options = attrs;
         },
 
         render: function () {
             this.$el.empty();
             _.each(this.collection.models, function (actor) {
-                this.$el.append(new ActorListItemView({model: actor}).render().el);
+                this.$el.append(new ActorListItemView({model: actor, displayMode: this.options.displayMode}).render().el);
             }, this);
             return this;
         }

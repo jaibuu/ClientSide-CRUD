@@ -27,8 +27,8 @@ define(function (require) {
         },
 
         events: {
-            "keyup .search-query": "search",
-            "keypress .search-query": "onkeypress"
+            "keyup .navbar .search-query": "search",
+            "keypress .navbar .search-query": "onkeypress"
         },
 
         search: function (event) {
@@ -41,7 +41,7 @@ define(function (require) {
             
             this.movieList.fetch({reset: true, data: {name: key}, success: function () {
                 setTimeout(function () {
-                    $('.dropdown').addClass('open');
+                    $('.navbar .dropdown').addClass('open');
                 });
             }});
         },
