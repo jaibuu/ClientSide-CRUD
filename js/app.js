@@ -4,7 +4,8 @@ require.config({
 
     paths: {
         app: '../app',
-        templates: '../templates'
+        templates: '../templates',
+        "moment": "moment.min",
     },
 
     map: {
@@ -25,7 +26,7 @@ require.config({
     }
 });
 
-require(['jquery', 'backbone', 'app/router', 'Backbone.ModelBinder', 'Backbone.CollectionBinder'], function ($, Backbone, Router) {
+require(['jquery', 'backbone', 'app/router', 'moment', 'Backbone.ModelBinder', 'Backbone.CollectionBinder'], function ($, Backbone, Router, moment) {
     var router = new Router();
     Backbone.history.start();
 });

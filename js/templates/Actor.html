@@ -1,8 +1,33 @@
 <div id="details" class="span7">
     <p><img src="localImage" width="160" height="160"/></p>
-    <h3>actor name</h3>
-    <h4>other detail</h4>
+    <h3><%= firstName %>  <%= lastName %> </h3>
     <br>
+    <table class="table table-striped">
+        <tr>
+            <td>First Name:</td>
+            <td> <%= firstName %></td>
+        </tr>
+        <tr>
+            <td>Last Name:</td>
+            <td> <%= lastName %></td>
+        </tr>
+        <tr>
+            <td>Gender:</td>
+            <td> <%= gender %></td>
+        </tr>
+        <tr>
+            <td>Birth Date:</td>
+            <td> <%= moment(new Date(parseInt(birthDate)*1000)).format("MM / DD / YYYY") %></td>
+        </tr>
+    </table>
+
+    <div class="alert alert-warning">
+        <h4 class="alert-heading">Edit</h4>
+        <hr />
+        <a href='#actor/edit/<%= id %>' class="btn btn-warning">
+            Edit <%= name %>
+        </a>
+    </div>
 </div>
 <div class="span5">
     <div class="well">
