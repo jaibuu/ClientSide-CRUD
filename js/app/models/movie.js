@@ -15,7 +15,6 @@ define(function (require) {
         ],
 
         findById = function (id) {
-            console.log('all', movies);
             var deferred = $.Deferred(),
                 movie = null,
                 l = movies.length,
